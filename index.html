@@ -23,8 +23,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-
- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -662,7 +660,7 @@
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="replyto" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <input type="email" class="form-control" name="email" id="reply_to" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                             <div class="validation"></div>
                           </div>
                         </div>
@@ -756,30 +754,31 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-		function sendMail() {
-			(function(){
-				emailjs.init("r4k3eccaMzSwrIopc"); //account public key
-			})();
+	function sendMail() {
+		(function(){
+			emailjs.init("r4k3eccaMzSwrIopc"); //account public key
+		})();
 
-			var params = {
-				sendername: document.querySelector("#sendername").value,
-				to: document.querySelector("#to").value,
-				subject: document.querySelector("#subject").value,
-				replyto: document.querySelector("#replyto").value,
-				message: document.querySelector("#message").value,
-			}
-
-			var serviceID = "service_gyyxk16"; // Email Service ID
-
-			var templateID = "template_x763x97"; //Email Template Id 
-
-			emailjs.send(serviceID, templateID, params)
-			.then(res=> {
-				alert("Email Sent Successfully!");
-			})
-			.eatch();
+		var params = {
+			sendername: document.querySelector("#sendername").value,
+			to: document.querySelector("#to").value,
+			subject: document.querySelector("#subject").value,
+			reply_to: document.querySelector("#reply_to").value,
+			message: document.querySelector("#message").value,
 		}
+
+		var serviceID = "service_gyyxk16"; // Email Service ID
+
+		var templateID = "template_x763x97"; //Email Template Id 
+
+		emailjs.send(serviceID, templateID, params)
+		.then(res=> {
+			alert("Email Sent Successfully!");
+		})
+		.eatch();
+	}
 	</script>
 </body>
 </html>
